@@ -3,6 +3,7 @@ from flask import Flask, render_template
 app = Flask(__name__)
 
 @app.route("/python")
+#http://127.0.0.1:5000/python 로 해야 함
 #@app.route("/")
 def python():
   return render_template("python.html")
