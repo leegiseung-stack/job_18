@@ -4,6 +4,7 @@ from bs4 import BeautifulSoup
 
 def search_incruit(keyword, pages=1):
     jobs = []
+    page = 1
     for page in range(pages):
         page = page * 30
 
