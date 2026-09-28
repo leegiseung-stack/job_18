@@ -1,16 +1,18 @@
-from flask import Flask, render_template
+from flask import Flask, render_template, request
+from scrapper import search_incruit
 
 app = Flask(__name__)
 
-@app.route("/python")
-#http://127.0.0.1:5000/python 로 해야 함
-#@app.route("/")
-def python():
-  return render_template("python.html")
-#def hello_world():
-  #return "Hello World! flask ㅁㅁ"
-  #return render_templates("index.html")
+@app.route("/")
+def hello_world():
+  return render_template("index.html")
+
+@app.route("/search")
+def search():
+  keyword = request.args.get("keyword")
+  jobs = search_incruit(keyword)
+  return render_template("search.html", keyword=keyword, jobs=enumerate(jobs))
+
 
 if __name__ == "__main__":
-  app.run(debug=True) #개발자모드
-  #app.run() #다른컴퓨터에 렌트했을때 이렇게올리세요 
+  app.run(debug=True)
